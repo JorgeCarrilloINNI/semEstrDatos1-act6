@@ -19,6 +19,12 @@ public:
     void operator=(Constancia& x);
     friend std::ostream& operator<<( std::ostream&, Constancia&);
     friend std::istream& operator>>( std::istream&, Constancia&);
+    friend Constancia operator +(Constancia& e1, Constancia& e2);
+    friend bool operator ==(Constancia& e1, Constancia& e2);
+    friend bool operator !=(Constancia& e1, Constancia& e2);
+	friend bool operator <(Constancia& e1, Constancia& e2);
+    friend bool operator >(Constancia& e1, Constancia& e2);
+
 };
 //***************************************************************************************
 //****************************Definicion de la clase Pila****************************

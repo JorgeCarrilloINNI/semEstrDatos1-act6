@@ -23,7 +23,10 @@ int main(){
     			MiCola.enqueue(x);
     			break;
     		case 2:
-    			cout<<MiCola.dequeue()<<endl;
+    			if(MiCola.vacia()){
+    				cout<<"La Cola esta vacia"<<endl;
+				}else
+    				cout<<MiCola.dequeue()<<endl;
     			break;
     		case 3:
     			cout<<"Saliendo..."<<endl;

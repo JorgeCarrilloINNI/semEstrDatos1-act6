@@ -18,6 +18,7 @@ void Constancia::operator=(Constancia& x)
 
 std::ostream& operator<<( std::ostream& o, Constancia& x)
 {
+	o<<"***************************************Constancia***************************************"<<std::endl;
     o<<"nombre: "<<x.nombre<<"\t carrera: "<<x.carrera<<"\t total Materias: "<<x.totalMaterias<<"\t promedio: "<<x.promedio<<std::endl;
     return o;
 }
@@ -72,14 +73,8 @@ void Cola::enqueue(Constancia& elem){
     	inserta(elem,0);
 }
 Constancia& Cola::dequeue(){
-	Constancia b("", "", 0,0);
-	if(vacia()){
-		std::cout<<"Ya no hay alumnos que atender"<<std::endl;
-		return b;
-	}else{
-    	ult--;
-    	return datos[ult+1];
-    }
+	ult--;
+	return datos[ult+1];
 }
 bool Cola::elimina(int pos)
 {
@@ -115,26 +110,25 @@ int Cola::inserta(Constancia& elem, int pos)
     return 1;
 }
 
-friend Empleado operator +(Empleado& e1, Empleado& e2){
-    	return Empleado(e1.ClaveEmpleado+e2.ClaveEmpleado, e1.Nombre+e2.Nombre, e1.Domicilio+e2.Domicilio, e1.Sueldo+e2.Sueldo, e1.ReportaA+e2.ReportaA);
-    }
+Constancia operator +(Constancia& e1, Constancia& e2){
+	return Constancia(e1.nombre+e2.nombre, e1.carrera+e2.carrera, e1.totalMaterias+e2.totalMaterias, e1.promedio+e2.promedio);
+}
     	
-    friend bool operator ==(Empleado& e1, Empleado& e2){
-        return (e1.ClaveEmpleado == e2.ClaveEmpleado &&
-            e1.Nombre == e2.Nombre &&
-            e1.Domicilio == e2.Domicilio &&
-            e1.Sueldo == e2.Sueldo &&
-            e1.ReportaA == e2.ReportaA);
-    }
+bool operator ==(Constancia& e1, Constancia& e2){
+    return (e1.nombre == e2.nombre &&
+        e1.carrera == e2.carrera &&
+        e1.totalMaterias == e2.totalMaterias &&
+        e1.promedio == e2.promedio);
+}
 
-    friend bool operator !=(Empleado& e1, Empleado& e2){
-        return !(e1 == e2);
-    }
+bool operator !=(Constancia& e1, Constancia& e2){
+    return !(e1 == e2);
+}
     
-friend bool operator <(Empleado& e1, Empleado& e2) {
-        return e1.ClaveEmpleado < e2.ClaveEmpleado;
-    }
+bool operator <(Constancia& e1, Constancia& e2) {
+    return e1.promedio < e2.promedio;
+}
     
-    friend bool operator >(Empleado& e1, Empleado& e2) {
-        return e1.ClaveEmpleado > e2.ClaveEmpleado;
-    }
+bool operator >(Constancia& e1, Constancia& e2) {
+    return e1.promedio > e2.promedio;
+}
